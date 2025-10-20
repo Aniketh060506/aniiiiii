@@ -28,9 +28,9 @@ export default function Sidebar({ analytics, onSearch }) {
   };
 
   return (
-    <div className="w-80 h-screen bg-[#000000] border-r border-[rgba(255,255,255,0.1)] flex flex-col fixed left-0 top-0 overflow-hidden z-50">
+    <div className="w-80 h-screen bg-[#000000] border-r border-[rgba(255,255,255,0.1)] flex flex-col fixed left-0 top-0 overflow-hidden z-30">
       {/* Header */}
-      <div className="px-5 py-4 border-b border-[rgba(255,255,255,0.1)]">
+      <div className="px-5 py-4 border-b border-[rgba(255,255,255,0.1)] flex-shrink-0">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Zap className="w-5 h-5 text-white" />
