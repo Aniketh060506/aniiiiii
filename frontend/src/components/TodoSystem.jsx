@@ -239,7 +239,7 @@ export default function TodoSystem({ todoData, onUpdateTodos, onBack }) {
   };
 
   return (
-    <div className="flex-1 p-8 mr-80">
+    <div className="flex-1 p-8 min-h-screen">
       <div className="mb-8">
         <button
           onClick={onBack}
