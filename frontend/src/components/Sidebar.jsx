@@ -43,7 +43,7 @@ export default function Sidebar({ analytics, onSearch }) {
       </div>
 
       {/* Search Bar */}
-      <div className="px-5 py-3 border-b border-[rgba(255,255,255,0.1)]">
+      <div className="px-5 py-3 border-b border-[rgba(255,255,255,0.1)] flex-shrink-0">
         <div className="relative">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
           <input
