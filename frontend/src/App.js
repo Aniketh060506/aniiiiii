@@ -211,8 +211,16 @@ function App() {
     <LenisWrapper>
       <div className="min-h-screen bg-black">
         {/* Top Navigation Bar */}
-        <div className="fixed top-0 left-0 right-0 h-16 bg-[#0A0A0A] border-b border-[rgba(255,255,255,0.1)] flex items-center justify-between px-6 z-40">
+        <div className={`fixed top-0 right-0 h-16 bg-[#0A0A0A] border-b border-[rgba(255,255,255,0.1)] flex items-center justify-between px-6 z-40 transition-all duration-300 ${
+          showSidebar ? 'left-80' : 'left-0'
+        }`}>
           <div className="flex items-center gap-4">
+            <button
+              onClick={() => setShowSidebar(!showSidebar)}
+              className="p-2 rounded-full bg-[#1C1C1E] hover:bg-[#262626] transition-all"
+            >
+              {showSidebar ? <X className="w-5 h-5 text-white" /> : <Menu className="w-5 h-5 text-white" />}
+            </button>
             <h1 className="text-white font-bold text-xl">CopyDock</h1>
             <div className="flex items-center gap-2">
               <button
@@ -238,51 +246,43 @@ function App() {
               </button>
             </div>
           </div>
-          <button
-            onClick={() => setShowSidebar(!showSidebar)}
-            className="p-2 rounded-full bg-[#1C1C1E] hover:bg-[#262626] transition-all"
-          >
-            {showSidebar ? <X className="w-5 h-5 text-white" /> : <Menu className="w-5 h-5 text-white" />}
-          </button>
         </div>
 
+        {/* Sidebar - Left Side */}
+        {showSidebar && (
+          <Sidebar
+            analytics={data.analytics}
+            onSearch={(query) => console.log('Search:', query)}
+          />
+        )}
+
         {/* Main Content */}
-        <div className="pt-16 flex">
-          <div className="flex-1">
-            {currentView === 'notebooks' && (
-              <NotebookManager
-                notebooks={data.notebooks}
-                onCreateNotebook={handleCreateNotebook}
-                onSelectNotebook={handleSelectNotebook}
-                onDeleteNotebook={handleDeleteNotebook}
-                onSetTarget={handleSetTarget}
-              />
-            )}
+        <div className={`pt-16 transition-all duration-300 ${showSidebar ? 'ml-80' : 'ml-0'}`}>
+          {currentView === 'notebooks' && (
+            <NotebookManager
+              notebooks={data.notebooks}
+              onCreateNotebook={handleCreateNotebook}
+              onSelectNotebook={handleSelectNotebook}
+              onDeleteNotebook={handleDeleteNotebook}
+              onSetTarget={handleSetTarget}
+            />
+          )}
 
-            {currentView === 'editor' && selectedNotebook && (
-              <Dashboard
-                notebook={selectedNotebook}
-                notes={data.notes.filter(n => n.notebookId === selectedNotebook.id)}
-                onBack={handleBackToNotebooks}
-                onSaveNote={handleSaveNote}
-                onDeleteNote={handleDeleteNote}
-              />
-            )}
+          {currentView === 'editor' && selectedNotebook && (
+            <Dashboard
+              notebook={selectedNotebook}
+              notes={data.notes.filter(n => n.notebookId === selectedNotebook.id)}
+              onBack={handleBackToNotebooks}
+              onSaveNote={handleSaveNote}
+              onDeleteNote={handleDeleteNote}
+            />
+          )}
 
-            {currentView === 'todos' && (
-              <TodoSystem
-                todoData={data.todoSystem}
-                onUpdateTodos={handleUpdateTodos}
-                onBack={handleBackToNotebooks}
-              />
-            )}
-          </div>
-
-          {/* Sidebar */}
-          {showSidebar && (
-            <Sidebar
-              analytics={data.analytics}
-              onSearch={(query) => console.log('Search:', query)}
+          {currentView === 'todos' && (
+            <TodoSystem
+              todoData={data.todoSystem}
+              onUpdateTodos={handleUpdateTodos}
+              onBack={handleBackToNotebooks}
             />
           )}
         </div>
