@@ -57,7 +57,7 @@ export default function Sidebar({ analytics, onSearch }) {
       </div>
 
       {/* Quick Stats */}
-      <div className="px-5 py-4 border-b border-[rgba(255,255,255,0.1)]">
+      <div className="px-5 py-4 border-b border-[rgba(255,255,255,0.1)] flex-shrink-0">
         <div className="grid grid-cols-4 gap-3">
           <div className="bg-[#1C1C1E] rounded-2xl p-3 text-center border border-[rgba(255,255,255,0.1)] hover:border-[rgba(255,255,255,0.2)] transition-all cursor-pointer">
             <div className="text-2xl font-bold text-white mb-1">{analytics.notebookCount}</div>
