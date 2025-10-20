@@ -82,7 +82,7 @@ export default function Sidebar({ analytics, onSearch }) {
       </div>
 
       {/* Tab Navigation */}
-      <div className="px-5 py-3 border-b border-[rgba(255,255,255,0.1)] flex items-center gap-4">
+      <div className="px-5 py-3 border-b border-[rgba(255,255,255,0.1)] flex items-center gap-4 flex-shrink-0 overflow-x-auto">
         <button
           onClick={() => setActiveTab('analytics')}
           className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-sm transition-all ${
