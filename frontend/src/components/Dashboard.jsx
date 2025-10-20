@@ -96,7 +96,7 @@ export default function Dashboard({ notebook, notes, onBack, onSaveNote, onDelet
   }
 
   return (
-    <div className="flex-1 flex h-screen mr-80">
+    <div className="flex-1 flex h-screen">
       {/* Notes List Sidebar */}
       <div className="w-64 border-r border-[rgba(255,255,255,0.1)] bg-[#0A0A0A] flex flex-col">
         <div className="p-4 border-b border-[rgba(255,255,255,0.1)]">
