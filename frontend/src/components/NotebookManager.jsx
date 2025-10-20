@@ -26,7 +26,7 @@ export default function NotebookManager({ notebooks, onCreateNotebook, onSelectN
   };
 
   return (
-    <div className="flex-1 p-8 mr-80">
+    <div className="flex-1 p-8 min-h-screen">
       {/* Header */}
       <div className="mb-8">
         <div className="flex items-center justify-between mb-6">
